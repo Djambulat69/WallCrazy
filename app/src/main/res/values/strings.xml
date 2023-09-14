@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">WallCrazy</string>
+    <string name="category">category</string>
 </resources>

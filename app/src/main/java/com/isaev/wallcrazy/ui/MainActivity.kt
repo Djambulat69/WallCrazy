@@ -1,7 +1,9 @@
-package com.isaev.wallcrazy
+package com.isaev.wallcrazy.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.isaev.wallcrazy.Category
+import com.isaev.wallcrazy.CategoryListAdapter
 
 import com.isaev.wallcrazy.databinding.ActivityMainBinding
 

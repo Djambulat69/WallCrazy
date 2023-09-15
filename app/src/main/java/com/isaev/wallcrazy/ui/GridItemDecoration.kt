@@ -1,4 +1,4 @@
-package com.isaev.wallcrazy
+package com.isaev.wallcrazy.ui
 
 import android.graphics.Rect
 import android.view.View

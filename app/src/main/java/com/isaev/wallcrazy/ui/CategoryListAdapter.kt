@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import com.isaev.wallcrazy.databinding.ImageListItemBinding
+import com.isaev.wallcrazy.ui.ImageItemViewHolder
 
 class CategoryListAdapter : ListAdapter<Category, ImageItemViewHolder>(CategoryDiffUtil) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ImageItemViewHolder {

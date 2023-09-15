@@ -1,4 +1,4 @@
-package com.isaev.wallcrazy
+package com.isaev.wallcrazy.ui
 
 
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
@@ -8,7 +8,7 @@ class ImageItemViewHolder(private val binding: ImageListItemBinding) : ViewHolde
 
     init {
         binding.root.setOnClickListener {
-            
+
         }
     }
 

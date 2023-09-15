@@ -2,6 +2,7 @@ package com.isaev.wallcrazy.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import com.isaev.wallcrazy.Category
 import com.isaev.wallcrazy.CategoryListAdapter
 
@@ -14,6 +15,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        Log.i("Tag", "CREATED")
 
         binding.categoryList.addItemDecoration(GridItemDecoration())
         binding.categoryList.adapter = CategoryListAdapter()

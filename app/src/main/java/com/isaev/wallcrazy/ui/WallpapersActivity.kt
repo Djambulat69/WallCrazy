@@ -23,7 +23,7 @@ class WallpapersActivity : AppCompatActivity() {
         binding = ActivityWallpapersBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.wallpapersList.adapter = WallpapersAdapter()
+        binding.wallpapersList.adapter = WallpapersAdapter(viewModel)
         binding.wallpapersList.addItemDecoration(GridItemDecoration())
 
         viewModel.images.observe(this) { wallPapers ->

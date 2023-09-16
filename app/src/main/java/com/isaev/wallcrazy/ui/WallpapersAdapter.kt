@@ -7,17 +7,18 @@ import androidx.recyclerview.widget.ListAdapter
 import com.isaev.wallcrazy.databinding.WallpaperListItemBinding
 import com.isaev.wallcrazy.network.Image
 
-class WallpapersAdapter : ListAdapter<Image, WallpaperViewHolder>(ImageDiffUtil) {
+class WallpapersAdapter(private val viewModel: WallpapersViewModel) :
+    ListAdapter<Image, WallpaperViewHolder>(ImageDiffUtil) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WallpaperViewHolder {
         val binding = WallpaperListItemBinding.inflate(
             LayoutInflater.from(parent.context), parent, false
         )
-        return WallpaperViewHolder(binding)
+        return WallpaperViewHolder(binding, viewModel)
     }
 
     override fun onBindViewHolder(holder: WallpaperViewHolder, position: Int) {
-        holder.bind(getItem(position).largeUrl)
+        holder.bind(getItem(position).webformatUrl)
     }
 }
 

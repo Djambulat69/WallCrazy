@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.FullWallpaperActivity">
+
+    <ImageView
+        android:id="@+id/wallpaper"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <View
+        android:id="@+id/grey_bg"
+        android:layout_width="0dp"
+        android:layout_height="200dp"
+        android:layout_margin="48dp"
+        android:background="@drawable/gray_bg"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/set_as_wallpaper_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp"
+        android:text="@string/set_as_wallpaper"
+        app:layout_constraintBottom_toBottomOf="@id/grey_bg"
+        app:layout_constraintEnd_toEndOf="@id/grey_bg"
+        app:layout_constraintStart_toStartOf="@id/grey_bg" />
+
+    <TextView
+        android:id="@+id/views"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="24dp"
+        android:drawablePadding="8dp"
+        android:gravity="center_vertical"
+        android:textColor="@color/white"
+        app:drawableStartCompat="@drawable/eye_icon"
+        app:layout_constraintStart_toStartOf="@id/grey_bg"
+        app:layout_constraintTop_toTopOf="@id/grey_bg"
+        tools:text="217361" />
+
+    <TextView
+        android:id="@+id/downloads"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="24dp"
+        android:drawablePadding="8dp"
+        android:gravity="center_vertical"
+        android:textColor="@color/white"
+        app:drawableStartCompat="@drawable/download_icon"
+        app:layout_constraintStart_toStartOf="@id/grey_bg"
+        app:layout_constraintTop_toBottomOf="@id/views"
+        tools:text="3242" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

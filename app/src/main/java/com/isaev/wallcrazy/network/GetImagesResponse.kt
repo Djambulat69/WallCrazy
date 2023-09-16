@@ -12,5 +12,8 @@ data class GetImagesResponse(
 @kotlinx.serialization.Serializable
 data class Image(
     @SerialName("id") val id: Long,
-    @SerialName("largeImageURL") val largeUrl: String
+    @SerialName("largeImageURL") val largeUrl: String,
+    @SerialName("webformatURL") val webformatUrl: String,
+    @SerialName("views") val views: Int,
+    @SerialName("downloads") val downloads: Int
 )

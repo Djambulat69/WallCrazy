@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
-
     <uses-permission android:name="android.permission.SET_WALLPAPER" />
 
     <application
@@ -16,6 +15,9 @@
         android:theme="@style/Theme.WallCrazy"
         android:usesCleartextTraffic="true"
         tools:targetApi="33">
+        <activity
+            android:name=".ui.FullWallpaperActivity"
+            android:exported="false" />
         <activity
             android:name=".ui.MainActivity"
             android:exported="true">

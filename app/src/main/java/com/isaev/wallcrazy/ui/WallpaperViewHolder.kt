@@ -1,39 +1,35 @@
 package com.isaev.wallcrazy.ui
 
-import android.app.WallpaperManager
-import android.widget.Toast
+import android.content.Intent
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.bumptech.glide.Glide
+import com.isaev.wallcrazy.R
 import com.isaev.wallcrazy.databinding.WallpaperListItemBinding
-import kotlinx.coroutines.*
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
 
 class WallpaperViewHolder(
-    private val binding: WallpaperListItemBinding
+    private val binding: WallpaperListItemBinding,
+    private val viewModel: WallpapersViewModel
 ) : ViewHolder(binding.root) {
 
     init {
-        binding.root.setOnClickListener {  }
+        binding.root.setOnClickListener {
+            val img = viewModel.images.value?.get(adapterPosition)
+            if (img != null) {
+                binding.root.context.startActivity(
+                    Intent(binding.root.context, FullWallpaperActivity::class.java).apply {
+                        putExtra(FullWallpaperActivity.WALLPAPER_EXTRA, Json.encodeToString(img))
+                    }
+                )
+            }
+        }
     }
 
     fun bind(imageUrl: String) {
-        Glide.with(binding.root.context).load(imageUrl).into(binding.picture)
-
-        binding.root.setOnLongClickListener {
-            CoroutineScope(Job()).launch(Dispatchers.IO) {
-                val imageBitmap = Glide.with(binding.root.context)
-                    .asBitmap()
-                    .load(imageUrl)
-                    .submit()
-                    .get()
-
-                WallpaperManager.getInstance(binding.root.context)
-                    .setBitmap(imageBitmap, null, false, WallpaperManager.FLAG_SYSTEM)
-
-                withContext(Dispatchers.Main) {
-                    Toast.makeText(binding.root.context, "Done", Toast.LENGTH_SHORT).show()
-                }
-            }
-            return@setOnLongClickListener true
-        }
+        Glide.with(binding.root.context)
+            .load(imageUrl)
+            .placeholder(R.drawable.image_icon)
+            .into(binding.picture)
     }
 }

@@ -16,6 +16,10 @@ class WallpapersActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        if (savedInstanceState == null) {
+            viewModel.getImages(intent.getStringExtra(CATEGORY_EXTRA) ?: CATEGORY_ALL)
+        }
+
         binding = ActivityWallpapersBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -25,5 +29,11 @@ class WallpapersActivity : AppCompatActivity() {
         viewModel.images.observe(this) { wallPapers ->
             (binding.wallpapersList.adapter as WallpapersAdapter).submitList(wallPapers)
         }
+    }
+
+
+    companion object {
+        const val CATEGORY_EXTRA = "category extra"
+        private const val CATEGORY_ALL = "all"
     }
 }

@@ -1,16 +1,16 @@
-package com.isaev.wallcrazy
+package com.isaev.wallcrazy.ui
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
-import com.isaev.wallcrazy.databinding.ImageListItemBinding
-import com.isaev.wallcrazy.ui.ImageItemViewHolder
+import com.isaev.wallcrazy.Category
+import com.isaev.wallcrazy.databinding.CategoryListItemBinding
 
 class CategoryListAdapter : ListAdapter<Category, ImageItemViewHolder>(CategoryDiffUtil) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ImageItemViewHolder {
         val binding =
-            ImageListItemBinding.inflate(
+            CategoryListItemBinding.inflate(
                 LayoutInflater.from(parent.context), parent, false
             )
 
@@ -18,7 +18,7 @@ class CategoryListAdapter : ListAdapter<Category, ImageItemViewHolder>(CategoryD
     }
 
     override fun onBindViewHolder(holder: ImageItemViewHolder, position: Int) {
-        holder.bind(getItem(position).name)
+        holder.bind(getItem(position))
     }
 }
 

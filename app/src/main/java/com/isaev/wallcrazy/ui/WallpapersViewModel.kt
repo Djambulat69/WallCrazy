@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.isaev.wallcrazy.Category
+import com.isaev.wallcrazy.R
 import com.isaev.wallcrazy.network.Image
 import com.isaev.wallcrazy.network.ImagesServiceHelper
 import kotlinx.coroutines.launch
@@ -24,7 +25,7 @@ class WallpapersViewModel : ViewModel() {
     fun getImages() {
         try {
             viewModelScope.launch {
-                val fetchedImages = apiService.getImages(Category("all"), 1)
+                val fetchedImages = apiService.getImages(Category("all", R.drawable.music_heart), 1)
                 _images.value = fetchedImages
 
                 Log.i(TAG, images.toString())

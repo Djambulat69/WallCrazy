@@ -4,20 +4,20 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
-import com.isaev.wallcrazy.databinding.ImageListItemBinding
+import com.isaev.wallcrazy.databinding.WallpaperListItemBinding
 import com.isaev.wallcrazy.network.Image
 
-class WallpapersAdapter : ListAdapter<Image, ImageItemViewHolder>(ImageDiffUtil) {
+class WallpapersAdapter : ListAdapter<Image, WallpaperViewHolder>(ImageDiffUtil) {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ImageItemViewHolder {
-        val binding = ImageListItemBinding.inflate(
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WallpaperViewHolder {
+        val binding = WallpaperListItemBinding.inflate(
             LayoutInflater.from(parent.context), parent, false
         )
-        return ImageItemViewHolder(binding)
+        return WallpaperViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: ImageItemViewHolder, position: Int) {
-        holder.bind(position.toString(), getItem(position).largeUrl)
+    override fun onBindViewHolder(holder: WallpaperViewHolder, position: Int) {
+        holder.bind(getItem(position).largeUrl)
     }
 }
 

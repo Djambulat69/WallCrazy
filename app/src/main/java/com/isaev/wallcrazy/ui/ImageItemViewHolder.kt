@@ -1,12 +1,14 @@
 package com.isaev.wallcrazy.ui
 
-
 import android.content.Intent
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
-import com.bumptech.glide.Glide
-import com.isaev.wallcrazy.databinding.ImageListItemBinding
+import com.isaev.wallcrazy.Category
+import com.isaev.wallcrazy.databinding.CategoryListItemBinding
 
-class ImageItemViewHolder(private val binding: ImageListItemBinding) : ViewHolder(binding.root) {
+
+class ImageItemViewHolder(
+    private val binding: CategoryListItemBinding
+) : ViewHolder(binding.root) {
 
     init {
         binding.root.setOnClickListener {
@@ -16,12 +18,8 @@ class ImageItemViewHolder(private val binding: ImageListItemBinding) : ViewHolde
         }
     }
 
-    fun bind(text: String) {
-        binding.title.text = text
-    }
-
-    fun bind(text: String, imageUrl: String) {
-        binding.title.text = text
-        Glide.with(binding.root.context).load(imageUrl).into(binding.picture)
+    fun bind(category: Category) {
+        binding.title.text = category.name
+        binding.picture.setImageResource(category.pic)
     }
 }

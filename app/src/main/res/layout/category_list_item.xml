@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="200dp"
+    android:layout_height="250dp"
+    android:layout_margin="6dp"
     app:cardCornerRadius="10dp">
 
     <ImageView
@@ -15,15 +16,15 @@
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
+        android:background="@color/gray_800"
         android:id="@+id/title"
+        android:textStyle="bold"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="start|bottom"
-        android:layout_margin="12dp"
-        android:shadowColor="?attr/colorOnBackground"
-        android:shadowRadius="1"
-        android:textColor="?attr/colorBackgroundFloating"
-        android:textSize="22sp"
+        android:padding="12dp"
+        android:textColor="@color/white"
+        android:textSize="16sp"
         tools:text="Fashion" />
 
 </com.google.android.material.card.MaterialCardView>

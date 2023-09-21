@@ -45,7 +45,7 @@ class FullWallpaperActivity : AppCompatActivity() {
         }
 
         binding.setAsWallpaperButton.setOnClickListener {
-            Glide.with(this)
+            Glide.with(this@FullWallpaperActivity)
                 .asBitmap()
                 .load(viewModel.wallpaper.value?.largeUrl)
                 .submit().let { future ->

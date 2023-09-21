@@ -3,4 +3,7 @@
     <string name="category">category</string>
 
     <string name="set_as_wallpaper">Set as wallpaper</string>
+
+    <string name="something_went_wrong">Something went wrong. Check your VPN and try again.</string>
+    <string name="retry">Retry</string>
 </resources>

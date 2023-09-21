@@ -3,6 +3,7 @@ package com.isaev.wallcrazy.ui
 import android.content.Intent
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.bumptech.glide.Glide
+import com.isaev.wallcrazy.DataResult
 import com.isaev.wallcrazy.R
 import com.isaev.wallcrazy.databinding.WallpaperListItemBinding
 import kotlinx.serialization.encodeToString
@@ -15,7 +16,8 @@ class WallpaperViewHolder(
 
     init {
         binding.root.setOnClickListener {
-            val img = viewModel.images.value?.get(adapterPosition)
+
+            val img = (viewModel.images.value as? DataResult.Success)?.data?.get(adapterPosition)
             if (img != null) {
                 binding.root.context.startActivity(
                     Intent(binding.root.context, FullWallpaperActivity::class.java).apply {

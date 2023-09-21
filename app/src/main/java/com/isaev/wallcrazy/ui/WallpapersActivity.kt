@@ -4,6 +4,9 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView.OnScrollListener
 import com.isaev.wallcrazy.DataResult
 import com.isaev.wallcrazy.databinding.ActivityWallpapersBinding
 import com.isaev.wallcrazy.network.Image
@@ -34,6 +37,18 @@ class WallpapersActivity : AppCompatActivity() {
         binding.tryAgainButton.setOnClickListener {
             viewModel.getImages(category)
         }
+
+        binding.wallpapersList.addOnScrollListener(object : OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                val manager = recyclerView.layoutManager as LinearLayoutManager
+                val itemCount = recyclerView.adapter!!.itemCount
+                val lastItem = manager.findLastVisibleItemPosition()
+
+                if (itemCount - lastItem < ITEM_COUNT_PAGING) {
+                    viewModel.getImages(category)
+                }
+            }
+        })
 
         viewModel.images.observe(this) { wallPapersResult ->
 
@@ -84,5 +99,6 @@ class WallpapersActivity : AppCompatActivity() {
     companion object {
         const val CATEGORY_EXTRA = "category extra"
         private const val CATEGORY_ALL = "all"
+        private const val ITEM_COUNT_PAGING = 5
     }
 }

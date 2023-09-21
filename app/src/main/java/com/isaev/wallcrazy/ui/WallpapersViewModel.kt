@@ -17,26 +17,36 @@ class WallpapersViewModel : ViewModel() {
 
     private val apiService = ImagesServiceHelper
 
+    private var page = 1
+    private var isLoading = false
+
     private val _images: MutableLiveData<DataResult<List<Image>>> = MutableLiveData()
     val images: LiveData<DataResult<List<Image>>> = _images
 
     fun getImages(category: String) {
+        if (isLoading) return
+
+        isLoading = true
         viewModelScope.launch {
-            _images.value = DataResult.Loading
+            if (page == 1) _images.value = DataResult.Loading
             try {
                 val fetchedImages =
                     apiService.getImages(
                         Category(
                             category.lowercase(Locale.ROOT),
                             R.drawable.music_heart
-                        ), 1
+                        ), page
                     )
 
-                _images.value = DataResult.Success(fetchedImages)
+                _images.value = DataResult.Success(
+                    (_images.value as? DataResult.Success)?.data.orEmpty() + fetchedImages
+                )
+                page += 1
             } catch (e: Exception) {
                 Log.e(TAG, e.toString())
                 _images.value = DataResult.Failure(e)
             }
+            isLoading = false
         }
 
     }

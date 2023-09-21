@@ -15,9 +15,7 @@
         android:theme="@style/Theme.WallCrazy"
         android:usesCleartextTraffic="true"
         tools:targetApi="33">
-        <activity
-            android:name=".ui.FullWallpaperActivity"
-            android:exported="false" />
+
         <activity
             android:name=".ui.MainActivity"
             android:exported="true">
@@ -29,6 +27,12 @@
         </activity>
         <activity
             android:name=".ui.WallpapersActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.SettingsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.FullWallpaperActivity"
             android:exported="false" />
     </application>
 

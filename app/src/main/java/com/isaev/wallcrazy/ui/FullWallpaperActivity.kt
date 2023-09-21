@@ -1,14 +1,10 @@
 package com.isaev.wallcrazy.ui
 
-import android.app.WallpaperManager
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
 import com.isaev.wallcrazy.databinding.ActivityFullWallpaperBinding
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 import kotlinx.serialization.json.Json
 
 class FullWallpaperActivity : AppCompatActivity() {
@@ -45,7 +41,7 @@ class FullWallpaperActivity : AppCompatActivity() {
         }
 
         binding.setAsWallpaperButton.setOnClickListener {
-            Glide.with(this@FullWallpaperActivity)
+/*            Glide.with(this@FullWallpaperActivity)
                 .asBitmap()
                 .load(viewModel.wallpaper.value?.largeUrl)
                 .submit().let { future ->
@@ -53,7 +49,12 @@ class FullWallpaperActivity : AppCompatActivity() {
                         WallpaperManager.getInstance(this@FullWallpaperActivity)
                             .setBitmap(future.get())
                     }
-                }
+                }*/
+
+            viewModel.wallpaper.value?.largeUrl?.let { url ->
+                WallpaperOptionBottomSheetDialog.newInstance(url).show(supportFragmentManager, null)
+            }
+
         }
     }
 
